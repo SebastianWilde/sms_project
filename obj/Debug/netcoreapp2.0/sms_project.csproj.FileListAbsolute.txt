@@ -1,0 +1,10 @@
+f:\sebastian\Documents\Work\grupo bscit\sms_project\bin\Debug\netcoreapp2.0\sms_project.deps.json
+f:\sebastian\Documents\Work\grupo bscit\sms_project\bin\Debug\netcoreapp2.0\sms_project.runtimeconfig.json
+f:\sebastian\Documents\Work\grupo bscit\sms_project\bin\Debug\netcoreapp2.0\sms_project.runtimeconfig.dev.json
+f:\sebastian\Documents\Work\grupo bscit\sms_project\bin\Debug\netcoreapp2.0\sms_project.dll
+f:\sebastian\Documents\Work\grupo bscit\sms_project\bin\Debug\netcoreapp2.0\sms_project.pdb
+f:\sebastian\Documents\Work\grupo bscit\sms_project\obj\Debug\netcoreapp2.0\sms_project.csproj.CoreCompileInputs.cache
+f:\sebastian\Documents\Work\grupo bscit\sms_project\obj\Debug\netcoreapp2.0\sms_project.AssemblyInfoInputs.cache
+f:\sebastian\Documents\Work\grupo bscit\sms_project\obj\Debug\netcoreapp2.0\sms_project.AssemblyInfo.cs
+f:\sebastian\Documents\Work\grupo bscit\sms_project\obj\Debug\netcoreapp2.0\sms_project.dll
+f:\sebastian\Documents\Work\grupo bscit\sms_project\obj\Debug\netcoreapp2.0\sms_project.pdb
