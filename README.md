@@ -36,4 +36,4 @@ Subir los archivos
 El pull request es para actualizar en la rama principal para ello se debe ir  a la página de git y crean pull request
 https://www.youtube.com/watch?v=rgbCcBNZcdQ&t=26s (video guía)
 
-**Por nada del mundo se deba hacer merge**
+**Por nada del mundo se debe hacer merge**
