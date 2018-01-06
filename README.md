@@ -30,7 +30,7 @@ Hacer un commit (Entre las "" debe haber un mensaje que explique que cambios se 
 >git commit -m "..."
 
 Subir los archivos
->git push origin Issue#1000-Juanito
+>git push origin nombre_de_la_rama
 
 ## Pull request
 El pull request es para actualizar en la rama principal para ello se debe ir  a la página de git y crean pull request
