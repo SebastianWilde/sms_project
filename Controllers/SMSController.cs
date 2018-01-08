@@ -7,29 +7,41 @@ using Microsoft.AspNetCore.Mvc;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
+
 using sms_project.Models;
 
 namespace sms_project.Controllers
 {
     public class SMSController : Controller
     {
+        private readonly sms_projectContext _context;
+        public SMSController(sms_projectContext context)
+        {
+            _context = context;
+        }        
         public IActionResult Index()
         {
-            // Your Account SID from twilio.com/console
+            // Helpers.Queries queries =  new Helpers.Queries(_context);
+            // List<string> destiatarios = queries.getNumerosFromUsuarios();
+            
+            // Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
 
-            //Agreguen su Credenciales de Twilion
-            var accountSid = "AC9f96b28edbb32a3c006942d55e075e62";
-            // Your Auth Token from twilio.com/console
-            var authToken = "3e29e0079c3303d6b7d67e364b56700e";   
+            // string mensaje  = "Esto es una prueba";
+            // serviceMassiveSms.sendMassiveSms(destiatarios,mensaje);
+            // ViewData["Message"] = "Mensaje Enviado";
+            return View();
+        }
 
-            TwilioClient.Init(accountSid, authToken);
+        [HttpPost]
+        public IActionResult Detalles(string Mensaje)
+        {
+            System.Console.WriteLine(Mensaje);
+            Helpers.Queries queries =  new Helpers.Queries(_context);
+            List<string> destiatarios = queries.getNumerosFromUsuarios();
+            
+            Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
 
-            var message = MessageResource.Create(
-                to: new PhoneNumber("+51972892866"),
-                from: new PhoneNumber("+15013024007"),
-                body: "Hello from C#");
-
-            Console.WriteLine(message.Sid);
+            serviceMassiveSms.sendMassiveSms(destiatarios,Mensaje);
             ViewData["Message"] = "Mensaje Enviado";
             return View();
         }
