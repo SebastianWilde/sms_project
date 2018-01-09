@@ -21,6 +21,15 @@
                 <th>
                     @Html.DisplayNameFor(model => model.numero)
                 </th>
+                                <th>
+                    @Html.DisplayNameFor(model => model.Nivel)
+                </th>
+                                <th>
+                    @Html.DisplayNameFor(model => model.Grado)
+                </th>
+                                <th>
+                    @Html.DisplayNameFor(model => model.Seccion)
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -35,6 +44,15 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.numero)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => item.Nivel)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => item.Grado)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => item.Seccion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
