@@ -10,7 +10,7 @@ using System;
 namespace sms_project.Migrations
 {
     [DbContext(typeof(sms_projectContext))]
-    [Migration("20180105165709_InitialCreate")]
+    [Migration("20180109040229_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,13 @@ namespace sms_project.Migrations
 
                     b.Property<string>("Apellido");
 
+                    b.Property<string>("Grado");
+
+                    b.Property<string>("Nivel");
+
                     b.Property<string>("Nombre");
+
+                    b.Property<string>("Seccion");
 
                     b.Property<string>("numero");
 

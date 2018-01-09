@@ -25,7 +25,13 @@ namespace sms_project.Migrations
 
                     b.Property<string>("Apellido");
 
+                    b.Property<string>("Grado");
+
+                    b.Property<string>("Nivel");
+
                     b.Property<string>("Nombre");
+
+                    b.Property<string>("Seccion");
 
                     b.Property<string>("numero");
 
