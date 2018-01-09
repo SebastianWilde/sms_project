@@ -1,0 +1,34 @@
+[
+    {
+        "Nombre":"Nombre1",
+        "Apellido":"Apellido1",
+        "numero":"+51959741515",
+        "Nivel":"Secundaria",
+        "Grado":"5",
+        "Seccion":"C"
+    },
+    {
+        "Nombre":"Nombre2",
+        "Apellido":"Apellido2",
+        "numero":"+51972892866",
+        "Nivel":"Secundaria",
+        "Grado":"4",
+        "Seccion":"B"
+    },
+    {
+        "Nombre":"Nombre3",
+        "Apellido":"Apellido3",
+        "numero":"+51957522473",
+        "Nivel":"Primaria",
+        "Grado":"3",
+        "Seccion":"A"
+    },
+    {
+        "Nombre":"Nombre4",
+        "Apellido":"Apellido4",
+        "numero":"+51914234082",
+        "Nivel":"Primaria",
+        "Grado":"2",
+        "Seccion":"B"
+    }
+]
