@@ -1,6 +1,48 @@
+@model string
+
 @{
     ViewData["Title"] = "SMS";
 }
+@{
+    ViewBag.Title = "Index";
+          AjaxOptions options = new AjaxOptions
+          {
+                 UpdateTargetId = "searchResult",
+                 Confirm = "Are you sure to start search?",
+                 InsertionMode = InsertionMode.Replace,
+                 LoadingElementId = "divLoading"
+         };
+}
+<h2>Index</h2>
+@using (Ajax.BeginForm("SearchPeople", options))
+{
+    <div id="divLoading" style="color: rgba(112, 107, 107, 0.801); width: 200px; background-color: yellow; fontsize: larger; display: none; position: absolute;">
+        Loading ....
+    </div>
+    <div>
+        @Html.TextBox("myTextBox", "This is value", new { @class = "form-control" }) 
+        <button type="submit">Buscar</button>
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Apellido
+                </th>
+                <th>
+                    Numero
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="searchResult">
+        @Html.Action("SearchPeople", new { keyword = "" })
+    </tbody>
+</table>
 
 @using(Html.BeginForm("Detalles","SMS", FormMethod.Post))
 {

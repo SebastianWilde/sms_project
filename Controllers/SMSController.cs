@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
+using Microsoft.EntityFrameworkCore;
 
 using sms_project.Models;
 
@@ -21,17 +22,23 @@ namespace sms_project.Controllers
         }        
         public IActionResult Index()
         {
-            // Helpers.Queries queries =  new Helpers.Queries(_context);
-            // List<string> destiatarios = queries.getNumerosFromUsuarios();
-            
-            // Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
-
-            // string mensaje  = "Esto es una prueba";
-            // serviceMassiveSms.sendMassiveSms(destiatarios,mensaje);
-            // ViewData["Message"] = "Mensaje Enviado";
             return View();
         }
-
+        public PartialViewResult AllPeople()
+        {
+            var data = from s in _context.Movie
+                       orderby s.numero
+                       select s.numero;
+            return PartialView(data.ToList());
+        }
+        public PartialViewResult SearchPeople(string keyword)
+        {
+            var data= from s in _context.Movie
+                                where s.Nombre == keyword
+                                orderby s.numero
+                                select s.numero;
+            return PartialView(data.ToList());
+        }
         [HttpPost]
         public IActionResult Detalles(string Mensaje)
         {

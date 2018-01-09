@@ -38,9 +38,9 @@ namespace sms_project.Helpers
 
         public MassiveSms()
         {
-            accountSid = "ACf1b4d0ced4c84a4263bdfd51d84b5680";
-            authToken = "caaa7a05773f0e14eab6b875148b296c";
-            ToPhoneNumber = "+12282542751";
+            accountSid = "ACe015558675ea7b8edda3f40da3eb28e4";
+            authToken = "3ce3d327d64356a8a1ff5de89f5ebf43";
+            ToPhoneNumber = "+15042245074";
         }
 
         public bool sendMassiveSms(List<string> fromNumbers,string mensaje)
@@ -61,7 +61,6 @@ namespace sms_project.Helpers
                 catch 
                 {
                     noEnviados.Add(destinatario);
-
                 }
             }
 
