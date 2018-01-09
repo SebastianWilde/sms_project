@@ -1,46 +1,52 @@
-@model string
+@model IEnumerable<sms_project.Models.Destinatario>
 
 @{
     ViewData["Title"] = "SMS";
 }
-@{
-    ViewBag.Title = "Index";
-          AjaxOptions options = new AjaxOptions
-          {
-                 UpdateTargetId = "searchResult",
-                 Confirm = "Are you sure to start search?",
-                 InsertionMode = InsertionMode.Replace,
-                 LoadingElementId = "divLoading"
-         };
-}
-<h2>Index</h2>
-@using (Ajax.BeginForm("SearchPeople", options))
-{
-    <div id="divLoading" style="color: rgba(112, 107, 107, 0.801); width: 200px; background-color: yellow; fontsize: larger; display: none; position: absolute;">
-        Loading ....
-    </div>
-    <div>
-        @Html.TextBox("myTextBox", "This is value", new { @class = "form-control" }) 
-        <button type="submit">Buscar</button>
-    </div>
-}
+
+<h2>SMS</h2>
+
+<form asp-controller="SMS" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
                 <th>
-                    Nombre
+                    @Html.DisplayNameFor(model => model.Nombre)
                 </th>
                 <th>
-                    Apellido
+                    @Html.DisplayNameFor(model => model.Apellido)
                 </th>
                 <th>
-                    Numero
+                    @Html.DisplayNameFor(model => model.numero)
                 </th>
             <th></th>
         </tr>
     </thead>
-    <tbody id="searchResult">
-        @Html.Action("SearchPeople", new { keyword = "" })
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numero)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
 

@@ -20,24 +20,17 @@ namespace sms_project.Controllers
         {
             _context = context;
         }        
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View();
-        }
-        public PartialViewResult AllPeople()
-        {
-            var data = from s in _context.Movie
-                       orderby s.numero
-                       select s.numero;
-            return PartialView(data.ToList());
-        }
-        public PartialViewResult SearchPeople(string keyword)
-        {
-            var data= from s in _context.Movie
-                                where s.Nombre == keyword
-                                orderby s.numero
-                                select s.numero;
-            return PartialView(data.ToList());
+            var movies = from m in _context.Movie
+                        select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Nombre.Contains(searchString));
+            }
+
+            return View(await movies.ToListAsync());
         }
         [HttpPost]
         public IActionResult Detalles(string Mensaje)
