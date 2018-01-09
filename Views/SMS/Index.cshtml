@@ -4,13 +4,9 @@
 
 @using(Html.BeginForm("Detalles","SMS", FormMethod.Post))
 {
-    <ol>
-        <li>
-            @Html.Label("Mensaje")
-        </li>
-        <li>
-            @Html.TextArea("Mensaje")
-        </li>
-    </ol>
-   <button>Enviar</button>
+    <div>
+        <h3>@Html.Label("Mensaje")</h3>
+        <textarea rows="8" cols="40" name="Mensaje" id="Mensaje"></textarea>
+    </div>
+    <button>Enviar</button>
 }
