@@ -53,7 +53,7 @@ namespace sms_project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Nombre,Apellido,numero")] Destinatario destinatario)
+        public async Task<IActionResult> Create([Bind("ID,Nombre,Apellido,numero,Nivel,Grado,Seccion")] Destinatario destinatario)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace sms_project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Nombre,Apellido,numero")] Destinatario destinatario)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Nombre,Apellido,Nivel,Grado,Seccion")] Destinatario destinatario)
         {
             if (id != destinatario.ID)
             {
