@@ -14,6 +14,7 @@ Para realizar una nueva tarea, cambiarnos a la rama master.
 
 Actualizar todas las ramas
 >git pull
+
 (si no funciona)
 >git pull origin master
 
