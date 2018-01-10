@@ -28,6 +28,37 @@ namespace sms_project.Helpers
             System.Console.WriteLine(test);
             return test.ToList();
         }
+
+        public List<string> getValoresNivel()
+        {
+            List <string> ValoresNivel = new List<string>();
+            var test = _context.Movie.OrderBy(p => p.Nivel).ToLookup(p=>p.Nivel);
+            foreach( var aux in test)
+            {
+                ValoresNivel.Add(aux.Key);
+            }
+            return ValoresNivel;
+        }
+        public List<string> getValoresGrado()
+        {
+            List <string> ValoresGrado = new List<string>();
+            var test = _context.Movie.OrderBy(p => p.Grado).ToLookup(p=>p.Grado);
+            foreach( var aux in test)
+            {
+                ValoresGrado.Add(aux.Key);
+            }
+            return ValoresGrado;
+        }
+        public List<string> getValoresSeccion()
+        {
+            List <string> ValoresSeccion = new List<string>();
+            var test = _context.Movie.OrderBy(p => p.Seccion).ToLookup(p=>p.Seccion);
+            foreach( var aux in test)
+            {
+                ValoresSeccion.Add(aux.Key);
+            }
+            return ValoresSeccion;
+        }
     }
 
     public class MassiveSms
