@@ -1,63 +1,83 @@
-@model IEnumerable<sms_project.Models.Destinatario>
-
+@model sms_project.Models.Mensaje_Destinatarios
 @{
     ViewData["Title"] = "SMS";
 }
 
 <h2>SMS</h2>
-
-<form asp-controller="SMS" asp-action="Index">
+@using(Html.BeginForm("Index","SMS", FormMethod.Post))
+{
     <p>
-        Title: <input type="text" name="SearchString">
+        Nombre: @Html.TextBoxFor(m => m.NombreQ)
+        Nivel: @Html.DropDownListFor(m => m.NivelQ, new SelectList(Model.Select.Niveles))
+        Grado: @Html.DropDownListFor(m => m.GradoQ, new SelectList(Model.Select.Grados))
+        Seccion: @Html.DropDownListFor(m => m.SeccionQ, new SelectList(Model.Select.Secciones))
         <input type="submit" value="Filter" />
     </p>
-</form>
-
+}
+@using(Html.BeginForm("listQuery","SMS", FormMethod.Post))
+{
 <table class="table">
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
+                    Nombre
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Apellido)
+                    Apellido
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.numero)
+                    Numero
+                </th>
+                <th>
+                    Nivel
+                </th>
+                <th>
+                    Grado
+                </th>
+                <th>
+                    Seccion
                 </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@for (int i = 0; i < Model.Lista.Count(); i++) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
+                @Html.DisplayFor(modelItem => Model.Lista[i].Nombre)
+                @Html.HiddenFor(m => m.Lista[i].Nombre , Model.Lista[i].Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
+                @Html.DisplayFor(modelItem => Model.Lista[i].Apellido)
+                @Html.HiddenFor(m => m.Lista[i].Apellido , Model.Lista[i].Apellido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.numero)
+                @Html.DisplayFor(modelItem => Model.Lista[i].numero)
+                @Html.HiddenFor(m => m.Lista[i].numero , Model.Lista[i].numero)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        <td>
+                @Html.DisplayFor(modelItem => Model.Lista[i].Nivel)
+                @Html.HiddenFor(m => m.Lista[i].Nivel , Model.Lista[i].Nivel)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => Model.Lista[i].Grado)
+                @Html.HiddenFor(m => m.Lista[i].Grado , Model.Lista[i].Grado)
+            </td>
+                        <td>
+                @Html.DisplayFor(modelItem => Model.Lista[i].Seccion)
+                @Html.HiddenFor(m => m.Lista[i].Seccion , Model.Lista[i].Seccion)
             </td>
         </tr>
 }
     </tbody>
 </table>
 
-@using(Html.BeginForm("Detalles","SMS", FormMethod.Post))
-{
     <ol>
         <li>
             @Html.Label("Mensaje")
         </li>
         <li>
-            @Html.TextArea("Mensaje")
+            @Html.TextAreaFor(m => m.Mensaje, new { @class = "form-control"})
         </li>
     </ol>
    <button>Enviar</button>
