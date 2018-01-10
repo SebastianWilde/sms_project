@@ -8,13 +8,13 @@
 {
     <p>
         Nombre: @Html.TextBoxFor(m => m.NombreQ)
-        Nivel: @Html.DropDownListFor(m => m.NivelQ, new SelectList(Model.Select.Niveles))
-        Grado: @Html.DropDownListFor(m => m.GradoQ, new SelectList(Model.Select.Grados))
-        Seccion: @Html.DropDownListFor(m => m.SeccionQ, new SelectList(Model.Select.Secciones))
+        Nivel: @Html.DropDownListFor(m => m.NivelQ,new SelectList(Model.Select.Niveles), string.Empty)
+        Grado: @Html.DropDownListFor(m => m.GradoQ,new SelectList(Model.Select.Grados),string.Empty)
+        Seccion: @Html.DropDownListFor(m => m.SeccionQ,new SelectList(Model.Select.Secciones),string.Empty)
         <input type="submit" value="Filter" />
     </p>
 }
-@using(Html.BeginForm("listQuery","SMS", FormMethod.Post))
+@using(Html.BeginForm("Detalles","SMS", FormMethod.Post))
 {
 <table class="table">
     <thead>

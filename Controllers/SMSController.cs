@@ -45,22 +45,25 @@ namespace sms_project.Controllers
                 }
             }
             var queryList = new Mensaje_Destinatarios();
-            queryList.Lista = await movies.ToListAsync(); 
+            queryList.Lista = await movies.ToListAsync();
+            queryList.Select = new  Seleccionable();
             queryList.Select.Niveles = queries.getValoresNivel();
             queryList.Select.Grados = queries.getValoresGrado();
             queryList.Select.Secciones = queries.getValoresSeccion();
             return View(queryList);
         }
         [HttpPost]
-        public IActionResult Detalles(string Mensaje)
+        public IActionResult Detalles(Mensaje_Destinatarios Forma)
         {
-            System.Console.WriteLine(Mensaje);
-            Helpers.Queries queries =  new Helpers.Queries(_context);
-            List<string> destiatarios = queries.getNumerosFromUsuarios();
-            
+
+            List<string> destiatarios= new List<string>();
+            for (int i = 0; i < Forma.Lista.Count(); i++)
+            {
+                destiatarios.Add(Forma.Lista[i].numero);
+            }
             Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
 
-            serviceMassiveSms.sendMassiveSms(destiatarios,Mensaje);
+            serviceMassiveSms.sendMassiveSms(destiatarios,Forma.Mensaje);
             ViewData["Message"] = "Mensaje Enviado";
             return View();
         }
