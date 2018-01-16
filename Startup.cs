@@ -26,7 +26,7 @@ namespace sms_project
             // Use SQL Database if in Azure, otherwise, use SQLLite
             if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
                 services.AddDbContext<sms_projectContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+                    options.UseSqlServer(Configuration.GetConnectionString("sms_projectContext")));
             else
                 services.AddDbContext<sms_projectContext>(options =>
                     options.UseSqlite("Data Source=sms_project.db"));
