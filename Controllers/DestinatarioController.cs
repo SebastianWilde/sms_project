@@ -55,12 +55,18 @@ namespace sms_project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Nombre,Apellido,numero,Nivel,Grado,Seccion")] Destinatario destinatario)
         {
-            if (ModelState.IsValid)
+            try
             {
-                
-                _context.Movie.Add(destinatario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Movie.Add(destinatario);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (System.Exception)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
             return View(destinatario);
         }
