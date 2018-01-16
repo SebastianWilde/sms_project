@@ -58,7 +58,7 @@ namespace sms_project.Controllers
             if (ModelState.IsValid)
             {
                 //_context.Movie.Add(destinatario);
-                //await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(destinatario);
