@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using sms_project.Models;
-using System.Diagnostics.Trace;
 namespace sms_project
 {
     public class Program
@@ -24,13 +23,15 @@ namespace sms_project
                 var services = scope.ServiceProvider;
                 try
                 {
+                    System.Diagnostics.Trace.WriteLine("Iniciando seed");
                     SeedDestinatarioData.Initialize(services);
+                    System.Diagnostics.Trace.WriteLine("Finalizando seed");
                 }
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred seeding the DB.");
-                    Trace.TraceError("No se pudo subir a la basde de datos");
+                    System.Diagnostics.Trace.TraceError("No se pudo subir a la basde de datos");
                 }
             }
 
