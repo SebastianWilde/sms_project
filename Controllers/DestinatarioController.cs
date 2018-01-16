@@ -66,7 +66,7 @@ namespace sms_project.Controllers
             }
             catch (System.Exception)
             {
-                ModelState.AddModelError("", destinatario.Nivel);
+                ModelState.AddModelError("", destinatario.ID.ToString());
             }
             return View(destinatario);
         }
