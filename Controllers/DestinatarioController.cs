@@ -59,14 +59,14 @@ namespace sms_project.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    await _context.AddAsync(destinatario);
+                    _context.Add(destinatario);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
             }
             catch (System.Exception)
             {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("", destinatario.Nivel);
             }
             return View(destinatario);
         }
