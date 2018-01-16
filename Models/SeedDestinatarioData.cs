@@ -29,7 +29,15 @@ namespace sms_project.Models
                 string Json = System.IO.File.ReadAllText(JsonPaht);
 
                 IEnumerable<Destinatario>  destinatarios = JsonConvert.DeserializeObject<IEnumerable<Destinatario>>(Json);
-                context.AddRange(destinatarios);
+                // context.AddRange(destinatarios);
+                context.Add ( new Destinatario {
+                    Nombre = "nombre1",
+                    Apellido = "nombre2",
+                    Grado = "5",
+                    Nivel = "secundaria",
+                    Seccion = "B",
+                    numero = "+51959741515"
+                });
                 context.SaveChanges();
             }
         }
