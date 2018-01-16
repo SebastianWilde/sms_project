@@ -17,11 +17,11 @@ namespace sms_project.Models
                 serviceProvider.GetRequiredService<DbContextOptions<sms_projectContext>>()))
             {
                 // Look for any movies.
-                if (context.Movie.Any())
-                {
-                    System.Diagnostics.Trace.WriteLine("Nada");
-                    return;   // DB has been seeded
-                }
+                // if (context.Movie.Any())
+                // {
+                //     System.Diagnostics.Trace.WriteLine("Nada");
+                //     return;   // DB has been seeded
+                // }
 
                 System.Diagnostics.Trace.WriteLine("Todo");
                 string JsonPaht ="../sms_project/Data/DestinatarioData.json";
