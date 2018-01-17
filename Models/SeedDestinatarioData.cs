@@ -26,7 +26,7 @@ namespace sms_project.Models
                 // }
 
                 Console.WriteLine("Todo");
-                string JsonPaht ="~/Data/DestinatarioData.json";
+                string JsonPaht ="./Data/DestinatarioData.json";
                 Console.WriteLine(JsonPaht);
                 string Json = System.IO.File.ReadAllText(JsonPaht);
 
