@@ -19,11 +19,11 @@ namespace sms_project.Models
                 serviceProvider.GetRequiredService<DbContextOptions<sms_projectContext>>()))
             {
                 // Look for any movies.
-                if (context.Movie.Any())
-                {
-                     Console.WriteLine("Nada");
-                     return;   // DB has been seeded
-                }
+                // if (context.Movie.Any())
+                // {
+                //      Console.WriteLine("Nada");
+                //      return;   // DB has been seeded
+                // }
 
                 Console.WriteLine("Todo");
                 string JsonPaht ="~/Data/DestinatarioData.json";
