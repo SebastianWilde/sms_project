@@ -7,6 +7,8 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 
+//using System.Web;  
+
 namespace sms_project.Models
 {
     public static class SeedDestinatarioData
@@ -19,11 +21,11 @@ namespace sms_project.Models
                 // Look for any movies.
                 if (context.Movie.Any())
                 {
-                     System.Diagnostics.Trace.WriteLine("Nada");
+                     Console.WriteLine("Nada");
                      return;   // DB has been seeded
                 }
 
-                System.Diagnostics.Trace.WriteLine("Todo");
+                Console.WriteLine("Todo");
                 string JsonPaht ="~/Data/DestinatarioData.json";
                 Console.WriteLine(JsonPaht);
                 string Json = System.IO.File.ReadAllText(JsonPaht);
