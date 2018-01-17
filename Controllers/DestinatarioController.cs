@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 using sms_project.Models;
+using Newtonsoft.Json;
 
 namespace sms_project.Controllers
 {
@@ -21,6 +23,22 @@ namespace sms_project.Controllers
         // GET: Destinatario
         public async Task<IActionResult> Index()
         {
+            if (!_context.Movie.Any())
+            {
+                string JsonPath = Path.GetFileName("~/DestinatarioData.json");
+                string Json = System.IO.File.ReadAllText(JsonPath);
+                IEnumerable<Destinatario>  destinatarios = JsonConvert.DeserializeObject<IEnumerable<Destinatario>>(Json);
+                _context.AddRange(destinatarios);
+                _context.SaveChanges();
+                 ModelState.AddModelError("", "Se guardo las cosas");
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "NO hay nada en bd");
+            }
+            ModelState.AddModelError("", "WASAAAA");
+
             return View(await _context.Movie.ToListAsync());
         }
 
