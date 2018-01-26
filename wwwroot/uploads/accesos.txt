@@ -1,0 +1,16 @@
+
+Nombre del servidor: baymi.database.windows.net
+Usuario: adminbdbaymi 
+Password: Baymi2@@18
+-------------------------------------------------------------
+PLANTILLA DE INGRESO DE UN PRODUCTO(NOTEBOOKS)
+
+exec InsertarDatoN
+		   ' ', /*Nombre del producto*/
+		  ' ',	/*Descripción Corta*/
+		  ' ',	/*Descripción larga- HTML*/
+		  'DEL_PRUEBA',  /*SKU*/
+		  'PRUEBA A123',  /*SKU del fabricante*/
+		  295,                       /*Precio*/
+		  14	/*Identificador de la categoría*/  
+
