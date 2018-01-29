@@ -23,7 +23,7 @@ namespace sms_project.Controllers
         // GET: Destinatario
         public async Task<IActionResult> Index()
         {
-            if (!_context.Movie.Any())
+            /*if (!_context.Movie.Any())
             {
                 string JsonPath = Path.GetFileName("~/DestinatarioData.json");
                 string Json = System.IO.File.ReadAllText(JsonPath);
@@ -38,7 +38,7 @@ namespace sms_project.Controllers
                 ModelState.AddModelError("", "NO hay nada en bd");
             }
             ModelState.AddModelError("", "WASAAAA");
-
+            */
             return View(await _context.Movie.ToListAsync());
         }
 

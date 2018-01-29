@@ -76,7 +76,13 @@ namespace sms_project.Controllers
             }
             Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
 
-            serviceMassiveSms.sendMassiveSms(destiatarios,Forma.Mensaje);
+            //serviceMassiveSms.sendMassiveSms(destiatarios,Forma.Mensaje);
+            var que = from r in _context.Movie select r;
+            foreach (Destinatario item in que)
+            {
+                _context.Movie.Remove(item);
+            }
+            _context.SaveChangesAsync();
             ViewData["Message"] = "Mensaje Enviado";
             return View();
         }

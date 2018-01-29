@@ -25,14 +25,14 @@ namespace sms_project.Models
                 //      return;   // DB has been seeded
                 // }
 
-                Console.WriteLine("Todo");
+                /*Console.WriteLine("Todo");
                 string JsonPaht ="./Data/DestinatarioData.json";
                 Console.WriteLine(JsonPaht);
                 string Json = System.IO.File.ReadAllText(JsonPaht);
 
                 IEnumerable<Destinatario>  destinatarios = JsonConvert.DeserializeObject<IEnumerable<Destinatario>>(Json);
                 context.AddRange(destinatarios);
-                context.SaveChanges();
+                context.SaveChanges();*/
             }
         }
     }
