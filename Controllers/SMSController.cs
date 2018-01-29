@@ -20,7 +20,7 @@ namespace sms_project.Controllers
             _context = context;
         }
         
-        public async Task<IActionResult> Index(Mensaje_Destinatarios search)
+        public async Task<IActionResult> Index(Mensaje_Destinatarios search, List<int> list_ids = null) 
         {
             Helpers.Queries queries = new Helpers.Queries(_context);
             var movies = from m in _context.Movie
@@ -45,13 +45,26 @@ namespace sms_project.Controllers
                 }
             }
             var queryList = new Mensaje_Destinatarios();
-            queryList.Lista = await movies.ToListAsync();
+            Console.WriteLine("Www");
+            if (list_ids.Any())
+            {
+                Console.WriteLine("Entra");
+                var aux = await movies.Where(s => list_ids.Contains(s.ID)).ToListAsync();
+                queryList.Lista = aux;
+            }
+            else
+            {
+                Console.WriteLine("no tiene");
+                queryList.Lista = await movies.ToListAsync();
+            }
             queryList.Select = new  Seleccionable();
             queryList.Select.Niveles = queries.getValoresNivel();
             queryList.Select.Grados = queries.getValoresGrado();
             queryList.Select.Secciones = queries.getValoresSeccion();
             return View(queryList);
         }
+
+
         [HttpPost]
         public IActionResult Detalles(Mensaje_Destinatarios Forma)
         {

@@ -45,6 +45,7 @@ namespace sms_project.Controllers
         public async Task<IActionResult> Post(List<IFormFile> files)
         {
             var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+            List <List<Destinatario>> lista_bash = new List<List<Destinatario>> ();
             foreach (var file in files)
             {
                 var filePath = Path.Combine(uploads, file.FileName);
@@ -61,8 +62,33 @@ namespace sms_project.Controllers
                                            .ToList();
                 _context.AddRange(values);
                 _context.SaveChanges();
+                lista_bash.Add(values);
             }
-            return View();
+            List<int>  lista_bash_send = new List<int> ();
+            foreach (var list1 in lista_bash)
+            {
+                foreach (var desti in list1)
+                {
+                    lista_bash_send.Add(desti.ID);
+                    Console.WriteLine(desti);
+                }
+            }
+            // Helpers.Queries queries = new Helpers.Queries(_context);
+            // Mensaje_Destinatarios queryList = new Mensaje_Destinatarios();
+            // queryList.Lista =lista_bash_send;
+            // queryList.Select = new  Seleccionable();
+            // queryList.Select.Niveles = queries.getValoresNivel();
+            // queryList.Select.Grados = queries.getValoresGrado();
+            // queryList.Select.Secciones = queries.getValoresSeccion();
+            // Console.WriteLine(queryList.Lista[1].Apellido);
+            TempData ["lista_bash"] = lista_bash_send;
+            return RedirectToAction("Index","SMS",new{list_ids = lista_bash_send});
+
+            // return View(queryList);
+
+            // return View();
+
+
             /*long size = files.Sum(f => f.Length);
 
             // full path to file in temp location
