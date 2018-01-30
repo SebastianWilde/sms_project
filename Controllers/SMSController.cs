@@ -45,16 +45,13 @@ namespace sms_project.Controllers
                 }
             }
             var queryList = new Mensaje_Destinatarios();
-            Console.WriteLine("Www");
             if (list_ids.Any())
             {
-                Console.WriteLine("Entra");
                 var aux = await movies.Where(s => list_ids.Contains(s.ID)).ToListAsync();
                 queryList.Lista = aux;
             }
             else
             {
-                Console.WriteLine("no tiene");
                 queryList.Lista = await movies.ToListAsync();
             }
             queryList.Select = new  Seleccionable();
@@ -76,8 +73,9 @@ namespace sms_project.Controllers
             }
             Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
 
-            //serviceMassiveSms.sendMassiveSms(destiatarios,Forma.Mensaje);
+            serviceMassiveSms.sendMassiveSms(destiatarios,Forma.Mensaje);
             var que = from r in _context.Movie select r;
+
             foreach (Destinatario item in que)
             {
                 _context.Movie.Remove(item);
