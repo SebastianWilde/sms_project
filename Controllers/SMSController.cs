@@ -67,15 +67,18 @@ namespace sms_project.Controllers
         {
 
             List<string> destiatarios= new List<string>();
-            for (int i = 0; i < Forma.Lista.Count(); i++)
+            if(Forma.Lista != null)
             {
-                destiatarios.Add(Forma.Lista[i].numero);
+                for (int i = 0; i < Forma.Lista.Count(); i++)
+                {
+                    destiatarios.Add(Forma.Lista[i].numero);
+                }
+                Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
+
+                serviceMassiveSms.sendMassiveSms(destiatarios,Forma.Mensaje);
             }
-            Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
-
-            serviceMassiveSms.sendMassiveSms(destiatarios,Forma.Mensaje);
             var que = from r in _context.Movie select r;
-
+        
             foreach (Destinatario item in que)
             {
                 _context.Movie.Remove(item);
