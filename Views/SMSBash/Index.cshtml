@@ -1,13 +1,20 @@
-<form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
-    <div class="form-group">
-        <div class="col-md-10">
-            <p>Upload one or more files using this form:</p>
-            <input type="file" name="files" multiple />
+@{
+    ViewData["Title"] = "SMSBash";
+}
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
+        <div class="form-group row">
+            <div class="col-md-10">
+                <h3>Cargar archivos csv:</h3>
+                <input type="file" name="files" multiple />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-10">
-            <input type="submit" value="Upload" />
+        <div class="form-group row">
+            <div class="col-md-10">
+                <input class="btn btn-primary" type="submit" value="Subir" />
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>

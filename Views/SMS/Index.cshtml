@@ -41,7 +41,8 @@
         </tr>
     </thead>
     <tbody>
-@for (int i = 0; i < Model.Lista.Count(); i++) {
+@for (int i = 0; i < Model.Lista.Count(); i++) 
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => Model.Lista[i].Nombre)
@@ -72,13 +73,7 @@
     </tbody>
 </table>
 
-    <ol>
-        <li>
-            @Html.Label("Mensaje")
-        </li>
-        <li>
-            @Html.TextAreaFor(m => m.Mensaje, new { @class = "form-control"})
-        </li>
-    </ol>
-   <button>Enviar</button>
+    @Html.Label("Mensaje")
+    @Html.TextAreaFor(m => m.Mensaje, new { @class = "form-control row"})
+    <button class="btn btn-primary">Enviar</button>
 }

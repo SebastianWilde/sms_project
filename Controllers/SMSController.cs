@@ -87,11 +87,5 @@ namespace sms_project.Controllers
             ViewData["Message"] = "Mensaje Enviado";
             return View();
         }
-        [HttpPost]
-        public IActionResult listQuery(Mensaje_Destinatarios Forma)
-        {
-            ViewData["Message"] = "Mensaje Enviado Satisfactiramente";
-            return View(Forma.Lista);
-        }
     }
 }
