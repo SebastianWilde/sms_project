@@ -67,9 +67,11 @@ namespace sms_project.Controllers
         {
 
             List<string> destiatarios= new List<string>();
+            Console.WriteLine("Lista de destinatarios");
             for (int i = 0; i < Forma.Lista.Count(); i++)
             {
                 destiatarios.Add(Forma.Lista[i].numero);
+                Console.WriteLine(Forma.Lista[i].numero);
             }
             Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
 

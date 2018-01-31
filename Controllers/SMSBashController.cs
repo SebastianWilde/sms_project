@@ -60,9 +60,21 @@ namespace sms_project.Controllers
                                            .Skip(1)
                                            .Select(v => FromCsv(v))
                                            .ToList();
-                _context.AddRange(values);
-                _context.SaveChanges();
+                
                 lista_bash.Add(values);
+                List<Destinatario> insert = new List<Destinatario> ();
+                foreach (var val in values)
+                {
+                    if (!_context.Movie.Any(x => x==val))
+                    {
+                        insert.Add(val);
+                    }
+                }
+                if (insert.Any())
+                {
+                    _context.AddRange(insert);
+                    _context.SaveChanges();
+                }
             }
             List<int>  lista_bash_send = new List<int> ();
             foreach (var list1 in lista_bash)
