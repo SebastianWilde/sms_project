@@ -23,16 +23,14 @@ namespace sms_project
                 var services = scope.ServiceProvider;
                 try
                 {
-                    System.Diagnostics.Trace.WriteLine("Iniciando seed");
-                    Console.WriteLine("Ingresando");
+                    
                     SeedDestinatarioData.Initialize(services);
-                    System.Diagnostics.Trace.WriteLine("Finalizando seed");
+                    
                 }
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred seeding the DB.");
-                    Console.WriteLine("Fail");
                     System.Diagnostics.Trace.TraceError("No se pudo subir a la basde de datos");
                 }
             }

@@ -23,22 +23,6 @@ namespace sms_project.Controllers
         // GET: Destinatario
         public async Task<IActionResult> Index()
         {
-            /*if (!_context.Movie.Any())
-            {
-                string JsonPath = Path.GetFileName("~/DestinatarioData.json");
-                string Json = System.IO.File.ReadAllText(JsonPath);
-                IEnumerable<Destinatario>  destinatarios = JsonConvert.DeserializeObject<IEnumerable<Destinatario>>(Json);
-                _context.AddRange(destinatarios);
-                _context.SaveChanges();
-                 ModelState.AddModelError("", "Se guardo las cosas");
-
-            }
-            else
-            {
-                ModelState.AddModelError("", "NO hay nada en bd");
-            }
-            ModelState.AddModelError("", "WASAAAA");
-            */
             return View(await _context.Movie.ToListAsync());
         }
 
@@ -66,9 +50,6 @@ namespace sms_project.Controllers
             return View();
         }
 
-        // POST: Destinatario/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Nombre,Apellido,numero,Nivel,Grado,Seccion")] Destinatario destinatario)
@@ -105,9 +86,6 @@ namespace sms_project.Controllers
             return View(destinatario);
         }
 
-        // POST: Destinatario/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Nombre,Apellido,Nivel,Grado,Seccion")] Destinatario destinatario)

@@ -67,11 +67,9 @@ namespace sms_project.Controllers
         {
 
             List<string> destiatarios= new List<string>();
-            Console.WriteLine("Lista de destinatarios");
             for (int i = 0; i < Forma.Lista.Count(); i++)
             {
                 destiatarios.Add(Forma.Lista[i].numero);
-                Console.WriteLine(Forma.Lista[i].numero);
             }
             Helpers.MassiveSms serviceMassiveSms = new Helpers.MassiveSms();
 
@@ -89,11 +87,6 @@ namespace sms_project.Controllers
         [HttpPost]
         public IActionResult listQuery(Mensaje_Destinatarios Forma)
         {
-            for (int i = 0; i < Forma.Lista.Count(); i++)
-            {
-                System.Console.WriteLine(Forma.Lista[i].numero);
-            }
-            System.Console.WriteLine(Forma.Mensaje);
             ViewData["Message"] = "Mensaje Enviado Satisfactiramente";
             return View(Forma.Lista);
         }

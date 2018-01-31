@@ -82,48 +82,10 @@ namespace sms_project.Controllers
                 foreach (var desti in list1)
                 {
                     lista_bash_send.Add(desti.ID);
-                    Console.WriteLine(desti);
                 }
             }
-            // Helpers.Queries queries = new Helpers.Queries(_context);
-            // Mensaje_Destinatarios queryList = new Mensaje_Destinatarios();
-            // queryList.Lista =lista_bash_send;
-            // queryList.Select = new  Seleccionable();
-            // queryList.Select.Niveles = queries.getValoresNivel();
-            // queryList.Select.Grados = queries.getValoresGrado();
-            // queryList.Select.Secciones = queries.getValoresSeccion();
-            // Console.WriteLine(queryList.Lista[1].Apellido);
             TempData ["lista_bash"] = lista_bash_send;
             return RedirectToAction("Index","SMS",new{list_ids = lista_bash_send});
-
-            // return View(queryList);
-
-            // return View();
-
-
-            /*long size = files.Sum(f => f.Length);
-
-            // full path to file in temp location
-            var filePath = Path.GetTempFileName();
-
-            foreach (var formFile in files)
-            {
-                if (formFile.Length > 0)
-                {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await formFile.CopyToAsync(stream);
-                        var mensaje=string.Empty;
-                        using(StreamReader reader= new StreamReader(formFile.OpenReadStream()))
-                        {
-                            mensaje=reader.ReadToEnd();
-                        }
-                        Console.WriteLine(mensaje);
-                    }
-                }
-            }
-
-            return Ok(new { count = files.Count, size, filePath });*/
         }
         public ActionResult Index()
         {

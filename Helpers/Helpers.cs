@@ -25,7 +25,6 @@ namespace sms_project.Helpers
             var test = from s in _context.Movie
             orderby s.numero 
             select s.numero;
-            System.Console.WriteLine(test);
             return test.ToList();
         }
 
@@ -94,18 +93,6 @@ namespace sms_project.Helpers
                     noEnviados.Add(destinatario);
                 }
             }
-
-            System.Console.WriteLine("Enviados \n-------------------");
-            foreach (var aux in enviados)
-            {
-                System.Console.WriteLine($"{aux}\n");
-            }
-            System.Console.WriteLine("No Enviados \n-------------------");
-            foreach (var aux in noEnviados)
-            {
-                System.Console.WriteLine($"{aux}\n");
-            }
-
             return true;
         }
     }
